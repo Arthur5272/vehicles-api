@@ -48,5 +48,17 @@ cd vehicles-api
 # 2. Instalar dependências
 npm install
 
-# 3. Configurar ambiente
-cp .env.example .env
+# 3. Iniciar o container
+docker-compose up -d
+
+# 4. Verificar se o banco está pronto (opcional)
+docker logs vehicles-db
+
+# 5. Executar migrations
+npx prisma migrate dev
+
+# 6. Popular dados iniciais
+npx prisma db seed
+
+# 7. Iniciar Servidor
+npm run dev
